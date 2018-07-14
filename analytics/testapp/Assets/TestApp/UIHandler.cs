@@ -20,6 +20,7 @@ using UnityEngine.UI;
 
 using Firebase;
 using Firebase.Analytics;
+using System.Collections.Generic;
 
 // Handler for UI buttons on the scene.  Also performs some
 // necessary setup (initializing the firebase app, etc) on
@@ -84,7 +85,16 @@ public class UIHandler : MonoBehaviour {
     FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLogin);
   }
 
-  public void AnalyticsProgress() {
+	public void CustomEvent()
+	{
+		// Log an event with no parameters.
+		DebugLog("Logging a CustomEvent event.");
+		List<Parameter> parms = new List<Parameter>();
+		parms.Add(new Parameter("someKey", "someVal"));
+		FirebaseAnalytics.LogEvent("MyEvent", parms.ToArray());
+	}
+
+	public void AnalyticsProgress() {
     // Log an event with a float.
     DebugLog("Logging a progress event.");
     FirebaseAnalytics.LogEvent("progress", "percent", 0.4f);
@@ -187,7 +197,11 @@ public class UIHandler : MonoBehaviour {
       if (GUILayout.Button("Log Level Up")) {
         AnalyticsLevelUp();
       }
-      if (GUILayout.Button("Reset Analytics Data")) {
+	  if (GUILayout.Button("Log Custom Event"))
+	  {
+	  	CustomEvent();
+	  }
+	  if (GUILayout.Button("Reset Analytics Data")) {
         ResetAnalyticsData();
       }
       if (GUILayout.Button("Show Analytics Instance ID")) {
