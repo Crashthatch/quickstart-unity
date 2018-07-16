@@ -1,0 +1,17 @@
+<!-- Copyright (C) 2018 Google Inc. All Rights Reserved.
+
+FirebaseApp iOS and Android Dependencies.
+-->
+
+<dependencies>
+  <androidPackages>
+		
+		  <androidPackage spec="android.arch.lifecycle:extensions:1.1.1"></androidPackage>
+  	  <!--<androidPackage spec="com.google.code.gson:gson:2.8.2"></androidPackage>-->
+
+      <repositories>
+        <repository>https://maven.google.com</repository>
+      </repositories>
+  </androidPackages>
+</dependencies>
+
